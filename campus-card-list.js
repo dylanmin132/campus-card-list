@@ -26,13 +26,6 @@ export class CampusCardList extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/campus-card-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
   }
 
   // Lit reactive properties
@@ -66,10 +59,13 @@ export class CampusCardList extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-  <slot></slot>
-</div>`;
+      <div class="wrapper">
+        <h3><span>${this.t.title}:</span> ${this.title}</h3>
+          <div class="cardlist">
+      <slot></slot>
+    </div>
+    </div>
+    `;
   }
 
   /**
